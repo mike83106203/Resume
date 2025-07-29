@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>林庚佑(Ken)-自我介紹</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+
+        .profile-img {
+        position: absolute; /* 關鍵！設定為絕對定位 */
+        top: 20px;         /* 距離頁面頂部 20 像素 */
+        right: 20px;       /* 距離頁面右側 20 像素 */
+            z-index: 1000;     /* 可選：確保圖片在其他內容之上 */
+        }
+
+        .profile-img img {
+            /* 這裡可以放一些圖片本身的樣式，例如圓角或陰影 */
+            border-radius: 8px; /* 輕微圓角效果，讓圖片看起來更柔和 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 增加陰影，讓圖片有立體感 */
+            /* 保持您在HTML中設定的寬高，或者在這裡重新定義 */
+            width: 150px;
+            height: 170px;
+            object-fit: cover; /* 如果圖片比例與設定寬高不符，可確保圖片填充且不變形 */
+        }
+
+        .name {
+            font-size: 3em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+            animation: fillBar 2s ease-in-out;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .description ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .description li {
+            margin-bottom: 5px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .language-level {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .certification-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e74c3c;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .cert-issuer {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .print-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .sidebar, .content {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .header::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-print"></i> 列印履歷
+    </button>
+
+    <div class="resume-container">
+        <header class="header">
+            <div class="profile-img">
+                <img src="大頭照範例.jpg" width="150" height="170">
+            </div>
+            <h1 class="name">林庚佑 Ken Lin</h1>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>mike6203@hotmail.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0933-276-583</span>
+
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/mike83106203</span>
+                </div>
+
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-code"></i> 技能專長
+                    </h2>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>HTML/CSS</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>MySQL database</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Linux</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power BI</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 60%"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-language"></i> 語言能力
+                    </h2>
+                    <div class="language-item">
+                        <span>中文</span>
+                        <span class="language-level">母語</span>
+                    </div>
+                    <div class="language-item">
+                        <span>英文</span>
+                        <span class="language-level">中級</span>
+                    </div>
+                    <div class="language-item">
+                        <span>台語</span>
+                        <span class="language-level">流利</span>
+                    </div>
+                </section>
+
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-circle"></i> 個人簡介
+                    </h2>
+
+                <p class="description">
+                    
+                    &emsp;&emsp;我是林庚佑，英文名字Ken，78年出生，家裡有一個姊姊跟一個妹妹，家中排老二，嘉義人目前居住台中，爸媽健在也在家鄉當樸實快樂的農民，所以幸運能從小過著小康生活。
+                </p>
+                <br>
+                <p>
+                    &emsp;&emsp;從大葉大學畢業後陸續曾任職<b>矽品、Kingston Technology</b>，具有10年經驗的記憶體相容性測試工程師，專注在驗證主板和記憶體在高壓力環境下利用測試軟體確保系統穩定度，以回報RD測試結果。
+                </p>
+                </section>
+        
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-briefcase"></i> 工作經歷
+                    </h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">工程師</div>
+                        <div class="company">Kingston Technology</div>
+                        <div class="date">2014年8月 - 2024年10月</div>
+                        <div class="description">
+                            <ul>
+                                <li>認識記憶體模組構造<b>PCB、DRAM、EEPORM、SPD、Register、CKD(DDR5 6400)</b></li>
+                                <li>有關半導體設計會參考國際規範<b>JEDEC</b></li>
+                                <li>測試軟體<b>Passmark Memtest86(Read、Write分析)</b></li>
+                                <li>調整記憶體產線測試效率實驗</li>
+                                <li>示波器操作(<b>1.校正 2.確認量測資料 VDD, CK, CMD, Address, DQ</b>)</li>
+                                <li><b>Intel Memory Validation</b>驗證實驗室(工程主機板相容性測試)</li>
+                                <li>DELL NVMe SSD Validation測試Automation(<b>AutoIt</b>)</li>
+                                <li>SSD NvMe SSD 相容性測試(<b>Spec:3.3v, Gen4, M key, controller,NAND</b>)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-graduation-cap"></i> 教育背景
+                    </h2>
+                    
+                    <div class="education-item">
+                        <div class="job-title">電機工程學系 學士</div>
+                        <div class="company">大葉大學</div>
+                        <div class="date">2008年9月 - 2012年6月</div>
+                        <div class="description">
+                            主修電機工程、電子電路
+                            <br>畢業專題：「機器人」
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">
+                        <i class="fas fa-project-diagram"></i> 重要專案
+                    </h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">建立SSD相容性測試
+                        </div>
+                        <div class="company">個人主導專案</div>
+                        <div class="date">2023年</div>
+                        <div class="description">
+                            使用市售跑分軟體模擬使用者環境，例如PCMark,Memtest86, Crystaldiskmark等，並使用三用電表串接SSD量測電壓，測試項目繁多，所以使用AutoIt程式執行批次檔(.bat)來達到自動化流程。
+                        </div>
+                    </div>
+
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 動畫效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 技能條動畫
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+
+            // 滾動動畫
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideUp 0.6s ease-out forwards';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.experience-item, .education-item, .section').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // 聯絡資訊互動效果
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

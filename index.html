@@ -12,15 +12,20 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    padding: 20px;
-    /* 確保 body 是定位上下文的基礎 */
-    position: relative;
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        /* 設置背景圖片，直接寫圖片名稱 */
+        background-image: url('background_image.jpg'); /* <-- 將此處替換為您的圖片檔名 */
+        background-size: cover; /* 讓圖片覆蓋整個背景區域 */
+        background-position: center center; /* 圖片居中顯示 */
+        background-attachment: fixed; /* 讓背景圖片固定，內容滾動 */
+        background-repeat: no-repeat; /* 防止圖片重複 */
+
+        min-height: 100vh;
+        padding: 20px;
+        position: relative;
 }
 
 .resume-container {
@@ -330,6 +335,21 @@ body {
 }
 /* --- Power BI iframe 響應式樣式結束 --- */
 
+/* ETL Tree Diagram specific styles */
+.etl-tree-diagram {
+    text-align: center; /* Center the image or diagram */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.etl-tree-diagram img {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
 
 /* --- 媒體查詢 - 平板 & 小螢幕 (Max-width 768px) --- */
 @media (max-width: 768px) {
@@ -530,6 +550,9 @@ body {
     .powerbi-container {
         display: none; /* 列印時隱藏 Power BI 報表，通常報表不適合直接列印 */
     }
+    .etl-tree-diagram {
+        break-inside: avoid; /* Prevent breaking the diagram across pages */
+    }
 }
     </style>
 </head>
@@ -541,7 +564,7 @@ body {
     <div class="resume-container">
         <header class="header">
             <div class="profile-img">
-                <img src="大頭照範例.jpg" width="150" height="170">
+                <img src="大頭照範例.jpg" width="150" height="170" alt="Profile Picture">
             </div>
             <h1 class="name">林庚佑 Ken Lin</h1>
             <div class="contact-info">
@@ -608,7 +631,7 @@ body {
                     </div>
                     <div class="skill-item">
                         <div class="skill-name">
-                            <span><a href="https://app.powerbi.com/groups/me/reports/002d6dbf-5c88-4ad6-88dd-6a7610e8f313/73e764d4303a3516d03a?language=zh-Hant&experience=power-bi">Power BI</a></span>
+                            <span>Power BI</span>
                             <span>60%</span>
                         </div>
                         <div class="skill-bar">
@@ -639,7 +662,7 @@ body {
 
             <main class="content">
                 <section class="section">
-                    <h2 class="section-title">
+                    <h2 class="section-title" id="about">
                         <i class="fas fa-user-circle"></i> 個人簡介
                     </h2>
 
@@ -653,13 +676,13 @@ body {
                 </p>
                 <br>
                 <p>
-                    &emsp;&emsp;從金士頓離職後，便有機會學習Python，當今AI熱潮，資料處理這部分勢必會是我必須補足的技能，對於未來找工作的方向，我希望能結合我在半導體的經驗結合資料分析投入下一份工作。
+                    &emsp;&emsp;從金士頓離職後，便有機會學習Python，過往經驗，當測試資料龐大時，呈現出來的結果必須是可視化整理過的，這點在當今AI熱潮，資料處理部分勢必會是我必須補足的技能，對於未來找工作的方向，我希望能結合我在半導體的經驗結合資料分析投入下一份工作。
                 </p>
                 </section>
         
 
                 <section class="section">
-                    <h2 class="section-title">
+                    <h2 class="section-title" id="experience">
                         <i class="fas fa-briefcase"></i> 工作經歷
                     </h2>
                     
@@ -682,7 +705,7 @@ body {
                     </div>
 
                 <section class="section">
-                    <h2 class="section-title">
+                    <h2 class="section-title" id="education">
                         <i class="fas fa-graduation-cap"></i> 教育背景
                     </h2>
                     
@@ -698,20 +721,44 @@ body {
                 </section>
 
                 <section class="section">
-                    <h2 class="section-title">
+                    <h2 class="section-title" id="projects">
                         <i class="fas fa-project-diagram"></i> 重要專案
                     </h2>
                     
                     <div class="experience-item">
-                        <div class="job-title">建立SSD相容性測試
-                        </div>
+                        <div class="job-title">建立SSD相容性測試</div>
                         <div class="company">個人主導專案</div>
                         <div class="date">2023年</div>
                         <div class="description">
-                            使用市售跑分軟體模擬使用者環境，例如PCMark,Memtest86, Crystaldiskmark等，並使用三用電表串接SSD量測電壓，測試項目繁多，所以使用AutoIt程式執行批次檔(.bat)來達到自動化流程。
+                            使用市售跑分軟體模擬使用者環境，例如PCMark, Memtest86, Crystaldiskmark等，並使用三用電表串接SSD量測電壓，測試項目繁多，所以使用AutoIt程式執行批次檔(.bat)來達到自動化流程。
                         </div>
                     </div>
 
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title" id="etl">
+                        <i class="fas fa-cubes"></i> 房地產專題ETL流程
+                    </h2>
+                    <div class="experience-item">
+                        <div class="job-title">房地產專題資料 ETL 實作</div>
+                        <div class="company"><a href="https://app.powerbi.com/groups/me/reports/002d6dbf-5c88-4ad6-88dd-6a7610e8f313/73e764d4303a3516d03a?language=zh-Hant&experience=power-bi" target="_blank">專題發表</a></div>
+                        <div class="date">2025年</div>
+                        <div class="description">
+                            <ul>
+                                <li>從政府開放資料平台取得房地產數據 (<b>實價登錄, 失業率, 不動產經紀業</b> 等)。</li>
+                                <li>使用 Python (Pandas, Requests) 進行資料擷取 (Extract) 和轉換 (Transform)，處理缺失值、異常值、資料型態轉換。</li>
+                                <li>將處理後的資料載入 (Load) 至 MySQL 資料庫，並建立相關資料表。</li>
+                                <li>透過排程自動化 ETL 流程，確保資料即時更新。</li>
+                                <li><b>成果：</b>利用PowerBI建立資料分析和視覺化提供可靠的數據基礎。</li>
+                            </ul>
+                            <div class="etl-tree-diagram">
+                                <h3>ETL 流程示意圖</h3>
+                                <img src="ETL.png" alt="ETL Process Tree Diagram">
+                                <p style="font-size: 0.9em; color: #7f8c8d; margin-top: 10px;"></p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
             </main>
         </div>

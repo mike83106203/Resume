@@ -353,98 +353,34 @@
 
 /* --- 媒體查詢 - 平板 & 小螢幕 (Max-width 768px) --- */
 @media (max-width: 768px) {
-    body {
-        padding: 10px; /* 減少 body 總體內邊距 */
-    }
-
-    .resume-container {
-        border-radius: 15px; /* 稍微減小容器圓角 */
-        margin: 0 auto; /* 確保居中 */
-    }
-
-    .main-content {
-        grid-template-columns: 1fr; /* 切換為單欄佈局 */
-    }
+    /* ... other existing styles ... */
 
     .header {
-        padding: 30px 20px; /* 調整 header 內邊距 */
+        /* Add these two lines to make header a flex container on mobile */
+        display: flex; /* Ensures flexbox properties like order work */
+        flex-direction: column; /* Stacks items vertically */
+        align-items: center; /* Centers items horizontally */
+        padding: 30px 20px; /* Adjust header padding */
     }
 
     /* 手機版大頭照位置調整 */
     .profile-img {
-        position: static; /* 取消絕對定位 */
-        margin-bottom: 20px; /* 在姓名上方添加間距 */
-        order: -1; /* 將圖片放在 header 內容的最前面 */
+        position: static; /* Keep this to remove absolute positioning */
+        margin-bottom: 20px; /* Add spacing below the image */
+        order: -1; /* This will now correctly move the image to the top within the flex header */
+        /* Ensure the image container itself is centered */
+        text-align: center; /* This might help center the image if it's smaller than its container */
+        width: 100%; /* Ensure it takes full width to allow centering */
     }
     .profile-img img {
         width: 120px; /* 縮小大頭照尺寸 */
         height: 140px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); /* 縮小陰影 */
+        display: block; /* Make the image a block element to allow margin auto for centering */
+        margin: 0 auto; /* Center the image itself if its container has width */
     }
 
-    .name {
-        font-size: 2.2em; /* 縮小姓名文字 */
-        margin-top: 0; /* 確保與圖片間距合理 */
-    }
-
-    .title {
-        font-size: 1.1em; /* 縮小職稱文字 */
-        margin-bottom: 15px;
-    }
-
-    .contact-info {
-        flex-direction: column; /* 聯絡資訊改為垂直堆疊 */
-        align-items: center; /* 居中顯示 */
-        gap: 10px; /* 縮小聯絡項目間距 */
-    }
-
-    .sidebar, .content {
-        padding: 20px; /* 調整側邊欄和內容區塊內邊距 */
-    }
-
-    .section-title {
-        font-size: 1.3em; /* 縮小標題文字 */
-        margin-bottom: 15px;
-    }
-
-    .experience-item, .education-item, .certification-item {
-        padding: 20px; /* 縮小項目內邊距 */
-        margin-bottom: 20px;
-        box-shadow: 0 3px 10px rgba(0,0,0,0.08); /* 縮小陰影 */
-    }
-
-    .job-title {
-        font-size: 1.1em; /* 縮小職稱文字 */
-    }
-
-    .company, .date, .description, .cert-issuer, .language-item span {
-        font-size: 0.9em; /* 縮小內文文字 */
-    }
-    .language-level {
-        padding: 3px 10px;
-        font-size: 0.7em;
-    }
-
-    /* 調整 Power BI iframe 在 768px 以下 */
-    .powerbi-container {
-        margin: 20px auto;
-        padding: 0 15px;
-    }
-    .powerbi-container iframe {
-        min-height: 250px; /* 調整最小高度 */
-    }
-
-    .print-btn {
-        top: auto; /* 取消頂部固定 */
-        bottom: 20px; /* 固定在底部 */
-        left: 50%;
-        transform: translateX(-50%); /* 水平居中 */
-        width: calc(100% - 40px); /* 寬度適應螢幕，留邊距 */
-        max-width: 300px; /* 限制最大寬度 */
-        padding: 12px 15px; /* 調整按鈕大小 */
-        font-size: 14px;
-        box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
-    }
+    /* ... rest of your mobile styles ... */
 }
 
 /* --- 媒體查詢 - 更小的手機螢幕 (Max-width 480px) --- */
